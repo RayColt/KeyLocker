@@ -138,7 +138,7 @@ namespace keylocker
         {
             Random rdm = new Random();
             long longval = (long)((rdm.NextDouble() * 2.0 - 1.0) * long.MaxValue);
-            String rawData = +longval + RandomString(13);
+            String rawData = longval + RandomString(13);
             // Create a SHA256   
             using (SHA256 sha256Hash = SHA256.Create())
             {
