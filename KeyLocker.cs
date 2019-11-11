@@ -93,7 +93,6 @@ namespace keylocker
                     PrintDocument printDocument = new PrintDocument();
                     printDialog.Document = printDocument;
                     //printPreviewDialog.Document = printDocument;
-                    //printPreviewDialog.
                     printDocument.PrintPage += delegate (object sender, PrintPageEventArgs e)
                     {
                         e.Graphics.DrawString(" " + codeR, new Font("Arial", 12), new SolidBrush(Color.Black), new RectangleF(50, 50, printDocument.DefaultPageSettings.PrintableArea.Width, printDocument.DefaultPageSettings.PrintableArea.Height));
