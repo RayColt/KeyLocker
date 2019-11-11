@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Drawing;
@@ -14,7 +14,7 @@ namespace keylocker
 {
     /**
      * KeyLocker 
-     * creates 2x an md5 password which can be printed
+     * creates 2x an md5 password which cab be printed
      *
      * @author Ray Colt <ray_colt@pentagon.mil>
      * @copyright Copyright (c) 2019 Ray Colt
@@ -32,7 +32,7 @@ namespace keylocker
             date = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss", new CultureInfo("en-US"));
         }
 
-        public void createKeys()
+        private void createKeys()
         {
             Console.Clear();
             /*
@@ -123,7 +123,7 @@ namespace keylocker
             }
         }
 
-        public String RandomString(int length)
+        private String RandomString(int length)
         {
             Random rdm = new Random();
             String dateKey = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss:fff", new CultureInfo("en-US"));
@@ -174,4 +174,3 @@ namespace keylocker
         }
     }
 }
-
