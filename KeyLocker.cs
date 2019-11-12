@@ -20,9 +20,8 @@ namespace keylocker
      * @copyright Copyright (c) 2019 Ray Colt
      * @license Public General License US Army
      *
-     * For Lauren & Janick 11/11/2019.
+     * for Lauren & Janick 2019/11/11
      */
-
     public class KeyLocker
     {
         private String date = "";
@@ -35,7 +34,7 @@ namespace keylocker
         private void createKeys()
         {
             Console.Clear();
-            /*
+            /* back-up in file
             string path = "keys.txt";
             if (!File.Exists(path))
             {
@@ -102,7 +101,6 @@ namespace keylocker
                     {
                         e.Graphics.DrawString(" " + codeWT, new Font("Arial", 12), new SolidBrush(Color.Black), new RectangleF(50, 150, printDocument.DefaultPageSettings.PrintableArea.Width, printDocument.DefaultPageSettings.PrintableArea.Height));
                     };
-
                     DialogResult result = printDialog.ShowDialog();
                     if (result == DialogResult.OK)
                     {
@@ -137,15 +135,12 @@ namespace keylocker
         private String ComputeSha256Hash()
         {
             Random rdm = new Random();
+            // a random double in the range [ -1.0, 1.0 ) multiplying by the long max will span the entire + / - range
             long longval = (long)((rdm.NextDouble() * 2.0 - 1.0) * long.MaxValue);
             String rawData = longval + RandomString(13);
-            // Create a SHA256   
             using (SHA256 sha256Hash = SHA256.Create())
-            {
-                // ComputeHash - returns byte array  
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-
-                // Convert byte array to a string   
+            {  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData)); 
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
