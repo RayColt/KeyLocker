@@ -14,7 +14,7 @@ namespace keylocker
 {
     /**
      * KeyLocker 
-     * creates 2x an md5 password which cab be printed
+     * creates 2x an md5 password which can be printed
      *
      * @author Ray Colt <ray_colt@pentagon.mil>
      * @copyright Copyright (c) 2019 Ray Colt
