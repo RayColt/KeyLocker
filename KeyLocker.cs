@@ -80,7 +80,7 @@ namespace keylocker
             var print = Console.ReadLine();
             if (print.ToLower().Equals("n"))
             {
-                Console.WriteLine("\n\rPress ENTER to close window... ");
+                Console.WriteLine("\n\rPress ENTER to close window...");
                 Console.ReadLine();
             }
             else if (print.ToLower().Equals("y"))
@@ -111,12 +111,12 @@ namespace keylocker
                 {
                     Console.WriteLine(ex.ToString());
                 }
-                Console.WriteLine("\nDone Printing...\n\rPress ENTER to close window... ");
+                Console.WriteLine("\nDone Printing...\n\rPress ENTER to close window...");
                 Console.ReadLine();
             }
             else
             {
-                Console.WriteLine("\nWrong input...\n\rPress ENTER to close window... ");
+                Console.WriteLine("\nWrong input...\n\rPress ENTER to close window...");
                 Console.ReadLine();
             }
         }
@@ -135,7 +135,7 @@ namespace keylocker
         private String ComputeSha256Hash()
         {
             Random rdm = new Random();
-            // a random double in the range [ -1.0, 1.0 ) multiplying by the long max will span the entire + / - range
+            // a random double in the range ( -1.0, 1.0 ) multiplying by the long max will span the entire + / - range
             long longval = (long)((rdm.NextDouble() * 2.0 - 1.0) * long.MaxValue);
             String rawData = longval + RandomString(13);
             using (SHA256 sha256Hash = SHA256.Create())
