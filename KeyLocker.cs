@@ -18,7 +18,6 @@ namespace keylocker
      *
      * @author Ray Colt <ray_colt@pentagon.mil>
      * @copyright Copyright (c) 2019 Ray Colt
-     * @license Public General License US Army
      *
      * for Lauren & Janick 2019/11/11
      */
