@@ -130,17 +130,19 @@ var sha256 = function sha256(ascii) {
 	function genKey() {
 	  var modus = document.querySelector('input[name="modus"]:checked').value;
 	  var data =  document.getElementById("data").value;
+	  var header = '########## PASSWORD KEYLOCKER ##########\n\r\n\rYour router PASSWORD for today:\n\r';
+	  var header2 = '\n\r\n\rYour WPA/TKIP PASSWORD for today:\n\r';
 	  if(modus == "32bits") {
-		  document.getElementById("data").value = generateKey(32);
+		  document.getElementById("data").value = header + generateKey(32) + header2 + generateKey(32);
 	  }
 	  if(modus == "64bits") {
-		  document.getElementById("data").value = generateKey(64);
+		  document.getElementById("data").value = header + generateKey(64) + header2 + generateKey(64);
 	  }
 	}		
 </script>
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
 <tr>
-    <td align="center"><b><a href="https://github.com/RayColt/KeyLocker">&lt;&lt;</a>&nbsp;&nbsp;&nbsp;Keylocker</b></td>
+  <td align="center"><b><a href="https://raycolt.github.io/KeyLocker/">&lt;&lt;</a>&nbsp;&nbsp;&nbsp;Keylocker</b></td>
 </tr>
 <tr>
   <td align="center"><textarea id="data" name="data" cols="50" rows="15"></textarea></td>
