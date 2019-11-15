@@ -1,6 +1,13 @@
 <html>
 <head>
 <title>KeyLocker</title>
+<style type="text/css">
+textarea {
+ color: white;
+ background-color: black;
+}
+</style>
+
 <script type="text/javascript">
 function generateKey(len) {
   var key = sha256(randomString(64));
