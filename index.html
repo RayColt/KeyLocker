@@ -7,7 +7,6 @@ textarea {
  background-color: black;
 }
 </style>
-
 <script type="text/javascript">
 function generateKey(len) {
   var key = sha256(randomString(64));
@@ -130,6 +129,17 @@ var sha256 = function sha256(ascii) {
 	}
 	return result;
 };
+
+function printTextArea() {
+	childWindow = window.open('','childWindow','location=yes, menubar=yes, toolbar=yes');
+	childWindow.document.open();
+	childWindow.document.write('<html><head></head><body>');
+	childWindow.document.write(document.getElementById('data').value.replace(/\n/gi,'<br>'));
+	childWindow.document.write('</body></html>');
+	childWindow.print();
+	childWindow.document.close();
+	childWindow.close();
+}
 </script>
 </head>
 <body>
@@ -140,10 +150,13 @@ var sha256 = function sha256(ascii) {
 	  var header = '########## PASSWORD KEYLOCKER ##########\n\r\n\rYour router PASSWORD for today:\n\r';
 	  var header2 = '\n\r\n\rYour WPA/TKIP PASSWORD for today:\n\r';
 	  if(modus == "32bits") {
-		  document.getElementById("data").value = header + generateKey(32) + header2 + generateKey(32);
+		  document.getElementById('data').value = header + generateKey(32) + header2 + generateKey(32);
 	  }
 	  if(modus == "64bits") {
-		  document.getElementById("data").value = header + generateKey(64) + header2 + generateKey(64);
+		  document.getElementById('data').value = header + generateKey(64) + header2 + generateKey(64);
+	  }
+	  if(modus == "print") {
+		  printTextArea();
 	  }
 	}		
 </script>
@@ -163,6 +176,9 @@ var sha256 = function sha256(ascii) {
         <td align="center"><label>
             <input type="radio" id="modus" name="modus" value="64bits" />
             64 bits</label></td>
+        <td align="center"><label>
+            <input type="radio" id="modus" name="modus" value="print" />
+            Print</label></td>            
       </tr>
     </table></td>
 </tr>
