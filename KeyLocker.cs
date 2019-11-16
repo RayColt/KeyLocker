@@ -135,9 +135,14 @@ namespace Keylocker
             String dateKey = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss:fff", new CultureInfo("en-US"));
             Regex pattern = new Regex(@"[/:\s]");
             dateKey = pattern.Replace(dateKey, "");
-            String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + dateKey + "abcdefghijklmnoyuvwxyz";
-            return new string(System.Linq.Enumerable.Repeat(chars, length)
-              .Select(s => s[rdm.Next(s.Length)]).ToArray());
+            dateKey = dateKey.Substring(8, 9);
+            String result = "";
+            String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + dateKey + "abcdefghijklmnoyuvwxyz";
+            for (var i = 0; i < length; i++)
+            {
+                result += characters[rdm.Next(0, characters.Length)];
+            }
+            return result;
         }
 
         private String ComputeSha256Hash(String rawData)
@@ -154,6 +159,7 @@ namespace Keylocker
                 return builder.ToString();
             }
         }
+
         public static void Main(string[] args)
         {
             KeyLocker kl = new KeyLocker();
