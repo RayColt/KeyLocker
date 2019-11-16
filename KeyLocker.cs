@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using System.Security.Cryptography;
-using System.Linq;
 using System.Threading;
 using System.Globalization;
 using System.Text.RegularExpressions;
