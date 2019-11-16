@@ -144,21 +144,21 @@ function printTextArea() {
 </head>
 <body>
 <script type="text/javascript">	
-	function genKey() {
-	  var modus = document.querySelector('input[name="modus"]:checked').value;
-	  var data =  document.getElementById("data").value;
-	  var header = '########## PASSWORD KEYLOCKER ##########\n\r\n\rYour router PASSWORD for today:\n\r';
-	  var header2 = '\n\r\n\rYour WPA/TKIP PASSWORD for today:\n\r';
-	  if(modus == "32bits") {
-		  document.getElementById('data').value = header + generateKey(32) + header2 + generateKey(32);
-	  }
-	  if(modus == "64bits") {
-		  document.getElementById('data').value = header + generateKey(64) + header2 + generateKey(64);
-	  }
-	  if(modus == "print") {
-		  printTextArea();
-	  }
-	}		
+function genKey() {
+	var modus = document.querySelector('input[name="modus"]:checked').value;
+	var data =  document.getElementById("data").value;
+	var header = '########## PASSWORD KEYLOCKER ##########\n\r\n\rYour router PASSWORD for today:\n\r';
+	var header2 = '\n\r\n\rYour WPA/TKIP PASSWORD for today:\n\r';
+	if(modus == "32bits") {
+		document.getElementById('data').value = header + generateKey(32) + header2 + generateKey(32);
+	}
+	if(modus == "64bits") {
+		document.getElementById('data').value = header + generateKey(64) + header2 + generateKey(64);
+	}
+	if(modus == "print") {
+		printTextArea();
+	}
+}		
 </script>
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
 <tr>
