@@ -138,7 +138,7 @@ namespace Keylocker
             dateKey = dateKey.Substring(8, 9);
             String result = "";
             String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + dateKey + "abcdefghijklmnoyuvwxyz";
-            for (var i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
                 result += characters[rdm.Next(0, characters.Length)];
             }
