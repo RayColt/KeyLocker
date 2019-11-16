@@ -125,8 +125,12 @@ namespace Keylocker
             int length_out = 32;
             Random rdm = new Random();
             String key = ComputeSha256Hash(RandomString(64));
-            return new string(System.Linq.Enumerable.Repeat(key, length_out)
-              .Select(s => s[rdm.Next(s.Length)]).ToArray());
+            String result = "";
+            for (int i = 0; i < length_out; i++)
+            {
+                result += key[rdm.Next(0, key.Length)];
+            }
+            return result;
         }
 
         private String RandomString(int length)
