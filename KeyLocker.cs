@@ -10,17 +10,17 @@ using System.Threading;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace keylocker
+namespace Keylocker
 {
     /**
-     * KeyLocker 
-     * creates 2x an md5 password which can be printed
-     *
-     * @author Ray Colt <ray_colt@pentagon.mil>
-     * @copyright Copyright (c) 2019 Ray Colt
-     *
-     * for Lauren & Janick 2019/11/11
-     */
+        * KeyLocker 
+        * creates 2x an md5 password which can be printed
+        *
+        * @author Ray Colt <ray_colt@pentagon.mil>
+        * @copyright Copyright (c) 2019 Ray Colt
+        *
+        * for Lauren & Janick 2019/11/11
+        */
     public class KeyLocker
     {
         private String date = "";
@@ -53,12 +53,12 @@ namespace keylocker
                 }
             }
             */
-            String passwordRouter = MD5();
-            System.Console.WriteLine("########## PASSWORD KEYLOCKER ##########\n\r");
+            String passwordRouter = GeneratKey();
+            System.Console.WriteLine("########## PASSWORD KEYLOCKER1 ##########\n\r");
             System.Console.WriteLine("Your router PASSWORD for today[" + date + "]:\n\r\n\r" + passwordRouter);
             String codeR = "PASSWORD[" + date + "]:\n\r\n\r " + passwordRouter;
             Thread.Sleep(2000);
-            String passwordWpaTkip = MD5();
+            String passwordWpaTkip = GeneratKey();
             System.Console.WriteLine("\n\rYour WPA/TKIP PASSWORD for today[" + date + "]:\n\r\n\r" + passwordWpaTkip);
             String codeWT = "PASSWORD[" + date + "]:\n\r\n\r " + passwordWpaTkip;
             /* back-up in file
@@ -120,26 +120,32 @@ namespace keylocker
             }
         }
 
+        private String GeneratKey()
+        {
+            int length_out = 32;
+            Random rdm = new Random();
+            String key = ComputeSha256Hash(RandomString(64));
+            return new string(System.Linq.Enumerable.Repeat(key, length_out)
+              .Select(s => s[rdm.Next(s.Length)]).ToArray());
+        }
+
         private String RandomString(int length)
         {
             Random rdm = new Random();
             String dateKey = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss:fff", new CultureInfo("en-US"));
             Regex pattern = new Regex(@"[/:\s]");
-            dateKey = pattern.Replace(dateKey,"");
+            dateKey = pattern.Replace(dateKey, "");
             String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + dateKey + "abcdefghijklmnoyuvwxyz";
             return new string(System.Linq.Enumerable.Repeat(chars, length)
               .Select(s => s[rdm.Next(s.Length)]).ToArray());
         }
 
-        private String ComputeSha256Hash()
+        private String ComputeSha256Hash(String rawData)
         {
             Random rdm = new Random();
-            // a random double in the range ( -1.0, 1.0 ) multiplying by the long max will span the entire + / - range
-            long longval = (long)((rdm.NextDouble() * 2.0 - 1.0) * long.MaxValue);
-            String rawData = longval + RandomString(13);
             using (SHA256 sha256Hash = SHA256.Create())
-            {  
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData)); 
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
@@ -148,19 +154,6 @@ namespace keylocker
                 return builder.ToString();
             }
         }
-
-        private String MD5()
-        {
-            MD5CryptoServiceProvider MD5Code = new MD5CryptoServiceProvider();
-            byte[] data = MD5Code.ComputeHash(Encoding.UTF8.GetBytes(ComputeSha256Hash()));
-            StringBuilder sb = new StringBuilder();
-            foreach (byte bd in data)
-            {
-                sb.Append(bd.ToString("x2").ToLower());
-            }
-            return sb.ToString();
-        }
-
         public static void Main(string[] args)
         {
             KeyLocker kl = new KeyLocker();
