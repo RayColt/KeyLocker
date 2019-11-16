@@ -54,7 +54,7 @@ namespace Keylocker
             }
             */
             String passwordRouter = GeneratKey();
-            System.Console.WriteLine("########## PASSWORD KEYLOCKER1 ##########\n\r");
+            System.Console.WriteLine("########## PASSWORD KEYLOCKER ##########\n\r");
             System.Console.WriteLine("Your router PASSWORD for today[" + date + "]:\n\r\n\r" + passwordRouter);
             String codeR = "PASSWORD[" + date + "]:\n\r\n\r " + passwordRouter;
             Thread.Sleep(2000);
