@@ -18,7 +18,6 @@ namespace Keylocker
         * @author Ray Colt <ray_colt@pentagon.mil>
         * @copyright Copyright (c) 2019 Ray Colt
         *
-        * for Lauren & Janick 2019/11/11
         */
     public class KeyLocker
     {
