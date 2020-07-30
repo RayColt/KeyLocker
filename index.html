@@ -180,6 +180,9 @@ function genKey() {
 	if(modus == "print") {
 		printTextArea();
 	}
+	if(modus == "save") {
+		download(data, 'keylocker', 'txt');
+	}
 }
 </script>
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
@@ -205,7 +208,7 @@ function genKey() {
             <input type="radio" id="modus" name="modus" value="print" />
             Print</label></td>
         <td align="center"><label>
-            <input type="radio" id="modus" name="modus" value="saveto" />
+            <input type="radio" id="modus" name="modus" value="save" />
             Save</label></td>
       </tr>
     </table></td>
