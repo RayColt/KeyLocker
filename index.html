@@ -163,24 +163,24 @@ function download(data, filename, type) {
 </head>
 <body>
 <script type="text/javascript">
-	function genKey() {
-	  var modus = document.querySelector('input[name="modus"]:checked').value;
-	  var data =  document.getElementById("data").value;
-	  var header = '########## PASSWORD KEYLOCKER ##########\n\r\n\rYour router PASSWORD for today:\n\r';
-	  var header2 = '\n\r\n\rYour WPA/TKIP PASSWORD for today:\n\r';
-	  if(modus == "32bits") {
-		  document.getElementById('data').value = header + generateKey(32) + header2 + generateKey(32);
-	  }
-	  if(modus == "64bits") {
-		  document.getElementById('data').value = header + generateKey(64) + header2 + generateKey(64);
-	  }
-	  if(modus == "print") {
-		  printTextArea();
-	  }
-	  if(modus == "saveto") {
-		  download(document.getElementById('data').value, 'key.txt', 'txt');
-	  }
+function genKey() {
+	var modus = document.querySelector('input[name="modus"]:checked').value;
+	var data =  document.getElementById("data").value;
+	var header = '########## PASSWORD KEYLOCKER ##########\n\r\n\rYour router PASSWORD for today:\n\r';
+	var header2 = '\n\r\n\rYour WPA/TKIP PASSWORD for today:\n\r';
+	if(modus == "4bits") {
+		document.getElementById('data').value = header + generateKey(4) + header2 + generateKey(4);
 	}
+	if(modus == "32bits") {
+		document.getElementById('data').value = header + generateKey(32) + header2 + generateKey(32);
+	}
+	if(modus == "64bits") {
+		document.getElementById('data').value = header + generateKey(64) + header2 + generateKey(64);
+	}
+	if(modus == "print") {
+		printTextArea();
+	}
+}
 </script>
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
 <tr>
@@ -190,8 +190,11 @@ function download(data, filename, type) {
   <td align="center"><textarea id="data" name="data" cols="50" rows="15"></textarea></td>
 </tr>
 <tr>
-  <td align="center"><table width="333" border="0">
+  <td align="center"><table width="400" border="0">
       <tr>
+        <td align="center"><label>
+            <input type="radio" id="modus" name="modus" value="4bits" checked="checked"/>
+            4 bits</label></td>
         <td align="center"><label>
             <input type="radio" id="modus" name="modus" value="32bits" checked="checked"/>
             32 bits</label></td>
