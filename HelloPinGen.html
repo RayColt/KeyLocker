@@ -1,12 +1,15 @@
+
 <html>
 <head>
 <title>Hello Pin Windows</title>
 <script type="text/javascript">
-function randomString(len) {
+function randomString(len)
+{
 	var result      = '';
-	var chars       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789abcdefghijklmnopqrstuvwxyz';// 0 is removed!!
+	var chars       = '123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';// 0 is removed!!
 	var charsLength = chars.length;
-	for (var i = 0; i < len; i++) {
+	for (var i = 0; i < len; i++)
+	{
 	  result += chars.charAt(Math.floor(Math.random() * charsLength));
 	}
 	return result;
@@ -15,7 +18,8 @@ function randomString(len) {
 </head>
 <body onload="genKey()">
 <script type="text/javascript">
-function genKey() {
+function genKey()
+{
 	document.getElementById("key").innerHTML = randomString(8);
 }
 </script>
