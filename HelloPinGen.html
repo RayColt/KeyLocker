@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <title>Hello Pin Windows</title>
@@ -7,10 +6,10 @@ function randomString(len)
 {
 	var result      = '';
 	var chars       = '123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';// 0 is removed!!
-	var charsLength = chars.length;
+	var len = chars.length;
 	for (var i = 0; i < len; i++)
 	{
-	  result += chars.charAt(Math.floor(Math.random() * charsLength));
+	  result += chars.charAt(Math.floor(Math.random() * len));
 	}
 	return result;
 }
