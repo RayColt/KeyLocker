@@ -6,10 +6,10 @@ function randomString(len)
 {
 	var result	= '';
 	var chars	= '123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';// 0 is removed!!
-	var len 	= chars.length;
+	var clen 	= chars.length;
 	for (var i = 0; i < len; i++)
 	{
-	    result += chars.charAt(Math.floor(Math.random() * len));
+	    result += chars.charAt(Math.floor(Math.random() * clen));
 	}
 	return result;
 }
