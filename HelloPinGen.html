@@ -31,7 +31,7 @@ function randomString(len) {
 		var rand = Math.floor(Math.random() * 62); // random: 0..61
 		var charCode = rand += rand > 9 ? (rand < 36 ? 55 : 61) : 48; // Get correct charCode
 		str += String.fromCharCode(charCode);      // add Character to str
-}
+	}
 return str; // After all loops are done, return the concatenated string
 }
 the function without the zero to prevent pin mistakes
@@ -42,8 +42,8 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 const randomString = (n, r='') => {
-  while (n--) r += String.fromCharCode((r=getRandomInt(1, 61), r+=r>9?(r<36?55:61):48));
-  return r;
+	while (n--) r += String.fromCharCode((r=getRandomInt(1, 61), r+=r>9?(r<36?55:61):48));
+	return r;
 };
 </script>
 </head>
