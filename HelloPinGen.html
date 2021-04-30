@@ -1,26 +1,57 @@
 <html>
 <head>
-<title>Hello Pin Windows</title>
+<title>HelloPinGen</title>
 <script type="text/javascript">
-function randomString(len)
-{
-	var result	= '';
-	var chars	= '123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';// 0 is removed!!
-	var clen 	= chars.length;
-	for (var i = 0; i < len; i++)
-	{
-	    result += chars.charAt(Math.floor(Math.random() * clen));
-	}
-	return result;
+/*
+author: ray colt, ss alpha - valerian
+the ASCII Character table ranges:
+
+_____0....9______A..........Z______a..........z___________  Character
+     | 10 |      |    26    |      |    26    |             Tot = 62 characters
+    48....57    65..........90    97..........122           CharCode ranges
+
+      |   rand   | charCode |  (0..61)rand += fix            = charCode ranges |
+------+----------+----------+--------------------------------+-----------------+
+0..9  |   0..9   |  48..57  |  rand += 48                    =     48..57      |
+A..Z  |  10..35  |  65..90  |  rand += 55 /  90-35 = 55   /  =     65..90      |
+a..z  |  36..61  |  97..122 |  rand += 61 / 122-61 = 61   /  =     97..122     |
+
+rand += rand>9 ? ( rand<36 ? 55 : 61 ) : 48 ;
+rand +=  true  ? (  true   ? 55 else 61 ) else 48 ;
+
+use function randomstring:
+const randomString = (n, r='') => {
+	while (n--) r += String.fromCharCode((r=Math.random()*62|0, r+=r>9?(r<36?55:61):48));
+	return r;
+};
+or
+function randomString(len) {
+	var str = "";                                // String result
+	for (var i = 0; i < len; i++) {              // Loop `len` times
+		var rand = Math.floor(Math.random() * 62); // random: 0..61
+		var charCode = rand += rand > 9 ? (rand < 36 ? 55 : 61) : 48; // Get correct charCode
+		str += String.fromCharCode(charCode);      // add Character to str
 }
+return str; // After all loops are done, return the concatenated string
+}
+the function without the zero to prevent pin mistakes
+*/
+function getRandomInt(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+const randomString = (n, r='') => {
+  while (n--) r += String.fromCharCode((r=getRandomInt(1, 61), r+=r>9?(r<36?55:61):48));
+  return r;
+};
 </script>
 </head>
 <body onload="genKey()">
 <script type="text/javascript">
-function genKey()
-{
+function genKey() {
 	document.getElementById("key").innerHTML = randomString(8);
-}
+	}
 </script>
 <p id="key"></p>
 </body>
