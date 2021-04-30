@@ -39,7 +39,7 @@ the function without the zero to prevent pin mistakes
 function getRandomInt(min, max) {
 	min = Math.ceil(min);
 	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 const randomString = (n, r='') => {
   while (n--) r += String.fromCharCode((r=getRandomInt(1, 61), r+=r>9?(r<36?55:61):48));
